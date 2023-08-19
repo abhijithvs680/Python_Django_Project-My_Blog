@@ -1,0 +1,44 @@
+{% extends 'blog/layout/base.html' %}
+{% load static %}
+{% block body_block %}
+<div class="tm-contact-img-container">
+            
+</div>
+
+<div style="margin-left: 400px;">
+<section class="tm-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+
+                <section>
+                    {% if request.session.id  %}
+                    <h3 class="tm-gold-text tm-form-title">Edit your data</h3>
+                   {% else %}
+                    <h3 class="tm-gold-text tm-form-title">USER SIGNUP</h3>
+                    {% endif %}
+
+            
+                    {% if msg %}
+                    <div>{{msg}}</div>
+                    {% endif %}
+
+                    {% if error %}
+                    <div class="alert alert-danger" role="alert">{{error}}</div>
+                    {% endif %}
+                    <form action="{% url 'signup' %}" method="post" class="tm-contact-form">  
+                        {% csrf_token %}                              
+
+                         {{ form.as_p }}
+                        <button type="submit" class="tm-btn">{% if request.session.id  %} Update {% else %} Submit  {% endif %}</button>                          
+                    </form>   
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+{% endblock %}
+
+
+

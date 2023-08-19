@@ -1,0 +1,20 @@
+{% extends 'blog/layout/base.html' %}
+{% block body_block %}
+
+<div style="margin-left: 400px;">
+    <section class="tm-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                    <h3 class="tm-gold-text tm-form-title">{{ post.title }}</h3>
+                    <p>{{ post.text }}</p>
+                    {% if post.image %}
+                    <img src="{{ post.image.url }}" alt="Post Image">
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+{% endblock %}

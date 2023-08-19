@@ -1,0 +1,40 @@
+{% extends 'blog/layout/base.html' %}
+{% load static %}
+{% block body_block %}
+<div class="tm-contact-img-container">
+            
+</div>
+
+<div style="margin-left: 400px;">
+<section class="tm-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+
+                <section>
+                    {% if error %}
+                    <div class="alert alert-danger" role="alert">{{error}}</div>
+                    {% endif %}
+
+                    <h3 class="tm-gold-text tm-form-title">SIGN IN PAGE</h3>
+                    <form action="{% url 'signin' %}" method="post" class="tm-contact-form">  
+                        {% csrf_token %} 
+
+                        <div class="form-group">
+                            <input type="text" id="username" name="Username" class="form-control" placeholder="Username" required/>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="password" name="Password" class="form-control" placeholder="Password" required/>
+                        </div> 
+
+   
+                
+                        <button type="submit" class="tm-btn">Sign in</button>                          
+                    </form>   
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+{% endblock %}

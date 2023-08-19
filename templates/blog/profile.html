@@ -1,0 +1,51 @@
+{% extends 'blog/layout/base.html' %}
+{% load static %}
+{% block body_block %}
+<div class="tm-contact-img-container">
+            
+</div>
+
+<div>
+    <section class="tm-section">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 ">
+                    <div style="float: left; margin-left: 150px;">
+                        <h2 >Profile </h2>
+                        {% if profile_pic %}
+                        <div style="height: 140px; width: 140px;" alt=""> <img src="/media/{{profile_pic.image}}" width="140px," sizes="140px"></div>
+                      {% else %}
+                       <div style="height: 140px; width: 140px;" alt=""><img src="{% static 'blog/img/tm-img-310x180-3.jpg' %}" width="140px," sizes="140px"></div>
+                       {% endif %}
+
+                        <form action="{% url 'profiles' %}" method="post" enctype="multipart/form-data" class="tm-contact-form">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+
+                            <button type="submit" class="tm-btn">Submit</button>
+                        </form>
+                    
+                    </div><br>
+                    
+                    <div style="margin-left: 100%;width: 350px;">
+
+                        <h1>Welcome {{ user.Name }}</h1>
+                        <p>Name: {{ user.Name}}</p>
+                        <p>Email: {{ user.Email}}</p>
+                        <p>Mobile: {{ user.Mobile}}</p>
+                        <p>Username: {{ user.Username}}</p>
+                    
+                        {% if user and user.id %}
+                        <a href="{% url 'edit_user' user_id=user.id %}"  class="tm-btn" >Edit</a>
+
+                        <a href="{% url 'change_password' %}"  class="tm-btn">Change Password</a>
+
+                        {% endif %}
+                    </div>
+</section>
+</div>
+</div>
+</div>
+
+{% endblock %}
+
